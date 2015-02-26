@@ -79,6 +79,9 @@ public class MainActivity extends Activity {
 
 		// Refresh the list when visible
 		// TODO: Search all
+		search(movieList);
+		 notifyUpdated();
+		
 		
 	}
 	
@@ -104,9 +107,10 @@ public class MainActivity extends Activity {
 		movies.clear();
 
 		// TODO: Extract search query from text view
-		
+		 movieManager.searchMovies("", null);
 		// TODO: Run the search thread
-		
+		Thread thread = new SearchThread(movies);
+		thread.start();
 	}
 	
 	/**
@@ -131,8 +135,18 @@ public class MainActivity extends Activity {
 
 
 	class SearchThread extends Thread {
+		private Movies movies;
+
 		// TODO: Implement search thread
+		public SearchThread(Movies movies){
+			this.movies = movies;
+		}
 		
+		public void run(){
+			for (int i = 0; i < movies.size(); i++){
+				Movie m = movies.get(i);
+			}
+		}
 	}
 
 	
